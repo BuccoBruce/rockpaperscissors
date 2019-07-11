@@ -5,10 +5,11 @@
 </head>
 <body>
   <script>
-    // Your JavaScript goes here!
 
       function computerPlay() {
+
         var roll = Math.random();
+
         if (roll < 0.33) {
           var result = "Rock";
           console.log("Computer picks " + result);
@@ -22,17 +23,15 @@
           console.log("Computer picks " + result);
           return "Scissors";
         }
+
       }
 
       function playRound(playerSelection, computerSelection) {
 
         playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
-        //console.log(playerSelection);
-        //console.log(computerSelection);
-
+        
         if (playerSelection == "Rock") {
           console.log("Rock, is your choice");
-          //console.log(computerSelection);
           if (computerSelection == "Rock") {
             return "tie";
           } else if (computerSelection == "Paper") {
@@ -42,7 +41,6 @@
           }
         } else if (playerSelection == "Paper") {
           console.log("Paper, is your choice");
-          //console.log(computerSelection);
           if (computerSelection == "Rock") {
             return "win";
           } else if (computerSelection == "Paper") {
@@ -52,7 +50,6 @@
           }
         } else if  (playerSelection == "Scissors") {
           console.log("Scissors, is your choice");
-          //console.log(computerSelection);
           if (computerSelection == "Rock") {
             return "lose";
           } else if (computerSelection == "Paper") {
@@ -65,8 +62,48 @@
           }
       }
 
-      playerSelection = prompt("Please enter your choice");
-      (playRound(playerSelection, computerPlay()));
+      function game() {
+
+        var winCount = 0;
+        var loseCount = 0;
+        var tieCount = 0;
+
+        function runRound() {
+
+          playerSelection = prompt("Please enter your choice");
+          result = playRound(playerSelection, computerPlay());
+
+          if (result == "win") {
+            winCount += 1;
+          } else if (result == "lose") {
+            loseCount += 1;
+          } else {
+            tieCount += 1;
+          }
+
+        }
+        
+        runRound();
+        runRound();
+        runRound();
+        runRound();
+        runRound();
+           
+        console.log("Win Count: " + winCount);
+        console.log("Lose Count: " + loseCount);
+        console.log("Tie Count: " + tieCount);
+
+        if (winCount > loseCount) {
+          console.log("You win!");
+        } else if (winCount < loseCount) {
+          console.log("You suck!");
+        } else {
+          console.log("Tie Game, try again!");
+        }
+
+      }
+
+      game();
 
   </script>
 </body>
