@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock Paper Scissors Project</title>
+</head>
+<body>
+  <script>
+    // Your JavaScript goes here!
+
+      function computerPlay() {
+        var roll = Math.random();
+        if (roll < 0.33) {
+          var result = "Rock";
+          console.log("Computer picks " + result);
+          return "Rock";
+        } else if (roll >= 0.33 && roll < 0.66) {
+          var result = "Paper";
+          console.log("Computer picks " + result);
+          return "Paper";
+        } else {
+          var result = "Scissors";
+          console.log("Computer picks " + result);
+          return "Scissors";
+        }
+      }
+
+      function playRound(playerSelection, computerSelection) {
+
+        playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
+        //console.log(playerSelection);
+        //console.log(computerSelection);
+
+        if (playerSelection == "Rock") {
+          console.log("Rock, is your choice");
+          //console.log(computerSelection);
+          if (computerSelection == "Rock") {
+            return "tie";
+          } else if (computerSelection == "Paper") {
+            return "win";
+          } else {
+            return "lose";
+          }
+        } else if (playerSelection == "Paper") {
+          console.log("Paper, is your choice");
+          //console.log(computerSelection);
+          if (computerSelection == "Rock") {
+            return "win";
+          } else if (computerSelection == "Paper") {
+            return "tie";
+          } else {
+            return "lose";
+          }
+        } else if  (playerSelection == "Scissors") {
+          console.log("Scissors, is your choice");
+          //console.log(computerSelection);
+          if (computerSelection == "Rock") {
+            return "lose";
+          } else if (computerSelection == "Paper") {
+            return "win";
+          } else {
+            return "tie";
+          }
+        } else {
+            alert("ERROR");
+          }
+      }
+
+      playerSelection = prompt("Please enter your choice");
+      (playRound(playerSelection, computerPlay()));
+
+  </script>
+</body>
+</html>
